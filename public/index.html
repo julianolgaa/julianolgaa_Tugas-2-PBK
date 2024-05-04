@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Dynamic Interaction</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+<body>
+
+<div id="app">
+    <h1>{{ greeting }}</h1>
+    <p>Masukan Nama:</p>
+    <input type="text" v-model="userName">
+    <p :class="{ 'highlight': isHighlighted }" :style="{ 'font-weight': isBold ? 'bold' : 'normal' }">Hello, {{ userName }}!</p>
+    <button @click="toggleStyle">input</button>
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            greeting: 'Selamat Datang',
+            userName: '',
+            isHighlighted: false,
+            isBold: false
+        },
+        methods: {
+            toggleStyle: function() {
+                this.isHighlighted = !this.isHighlighted;
+                this.isBold = !this.isBold;
+            }
+        }
+    });
+</script>
+
+<style>
+  body{
+   background-color: #ACC8E5;
+   font-family: Arial, Helvetica, sans-serif;
+  }
+  h1{
+    color: #112A46;
+  }
+    .highlight {
+        color: rgb(173, 106, 18);
+    }
+</style>
+
+</body>
+</html>
